@@ -7,7 +7,7 @@ import { State } from "./definitions";
 import { signIn, signOut } from "@/auth";
 import { AuthError } from "next-auth";
 
-const sql = postgres(process.env.POSTGRES_URL!, { ssl: "require" });
+export const sql = postgres(process.env.POSTGRES_URL!, { ssl: "require" });
 
 const FormSchema = z.object({
   customerId: z.string({
@@ -21,16 +21,8 @@ const FormSchema = z.object({
   }),
 });
 
-export const credentialSchema = z.object({
-  email: z.string({
-    invalid_type_error: "Please enter email!"
-  }).email(),
-  password: z.string({
-    invalid_type_error: "Please enter a password!"
-  }).min(6)
-})
 
-async function updateInvoice(id: string, prevState: State, formData: FormData) {
+export async function updateInvoice(id: string, prevState: State, formData: FormData) {
   const validatedData = FormSchema.safeParse({
     customerId: formData.get("customerId"),
     amount: formData.get("amount"),
@@ -62,7 +54,7 @@ async function updateInvoice(id: string, prevState: State, formData: FormData) {
   redirect("/dashboard/invoices");
 }
 
-async function createData(prevState: State ,formData: FormData) {
+export async function createData(prevState: State ,formData: FormData) {
   const validatedData = FormSchema.safeParse({
     customerId: formData.get("customerId"),
     amount: formData.get("amount"),
@@ -93,12 +85,12 @@ async function createData(prevState: State ,formData: FormData) {
   redirect("/dashboard/invoices");
 }
 
-async function deleteInvoice(id: string) {
+export async function deleteInvoice(id: string) {
   await sql`DELETE FROM invoices WHERE id = ${id}`;
   revalidatePath("/dashboard/invoices");
 }
 
-async function authenticate(prevState: string | undefined, formData: FormData){
+export async function authenticate(prevState: string | undefined, formData: FormData){
           try{
             await signIn('credentials', formData);
           }
@@ -115,8 +107,8 @@ async function authenticate(prevState: string | undefined, formData: FormData){
           }
 }
 
-async function logout(){
+export async function logout(){
   await signOut({redirectTo: '/'});
 }
 
-export { createData as default, updateInvoice, deleteInvoice,authenticate, logout };
+

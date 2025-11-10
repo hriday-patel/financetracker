@@ -5,7 +5,7 @@ import { z } from "zod";
 import postgres from "postgres";
 import { User } from "./app/lib/definitions";
 import bcrypt from 'bcrypt';
-import { credentialSchema } from "./app/lib/actions";
+import { credentialSchema } from "./app/lib/schema";
 const sql = postgres(process.env.POSTGRES_URL!, {ssl: 'require'});
 import { State } from "./app/lib/definitions";
 
