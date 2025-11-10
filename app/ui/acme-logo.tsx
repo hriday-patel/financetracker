@@ -1,13 +1,15 @@
-import { GlobeAltIcon } from '@heroicons/react/24/outline';
-import { lusitana } from '@/app/ui/fonts';
+import { CurrencyDollarIcon } from "@heroicons/react/24/solid";
+import { lusitana } from "@/app/ui/fonts";
 
-export default function AcmeLogo() {
+export default function FinTrackLogo() {
   return (
     <div
       className={`${lusitana.className} flex flex-row items-center leading-none text-white`}
     >
-      <GlobeAltIcon className="h-12 w-12 rotate-[15deg]" />
-      <p className="text-[44px]">Acme</p>
+      <div className="rounded-lg bg-gradient-to-br from-emerald-400 to-teal-600 p-2">
+        <CurrencyDollarIcon className="h-8 w-8" />
+      </div>
+      <p className="ml-2 text-[32px] font-bold">FinTrack</p>
     </div>
   );
 }
