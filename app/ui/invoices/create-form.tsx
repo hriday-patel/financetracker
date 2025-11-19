@@ -9,7 +9,7 @@ import {
   UserCircleIcon,
 } from "@heroicons/react/24/outline";
 import { Button } from "@/app/ui/button";
-import createData from "@/app/lib/actions";
+import {createData} from "@/app/lib/actions";
 import { State } from "@/app/lib/definitions";
 import { useActionState } from "react";
 

@@ -78,20 +78,9 @@ export default function Page() {
         </div>
 
         {/* Right Image */}
-        <div className="flex items-center justify-center md:w-2/5">
-          <div className="relative w-full">
-            <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary-300 to-secondary-300 blur-3xl opacity-20"></div>
-            <div className="relative rounded-2xl bg-white p-6 shadow-2xl">
-              <div className="aspect-square rounded-lg bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-6xl font-bold text-primary-500">📊</div>
-                  <p className="mt-4 text-slate-600 font-medium">
-                    Dashboard Preview
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div className="rounded-lg">
+          <Image src='/finance.jpg' width={600} height={600} alt="financial" className="object-cover object-center w-[600px] h-[500px] rounded-lg"/>
+          
         </div>
       </div>
 
